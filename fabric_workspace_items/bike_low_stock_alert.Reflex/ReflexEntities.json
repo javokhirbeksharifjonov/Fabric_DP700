@@ -1,0 +1,163 @@
+[
+  {
+    "uniqueIdentifier": "cb836589-b7cf-4e6f-88e8-983a521709ad",
+    "payload": {
+      "name": "bike_stream",
+      "description": "Container Description",
+      "type": "eventstreams"
+    },
+    "type": "container-v1"
+  },
+  {
+    "uniqueIdentifier": "4b795907-a8cf-5d18-8090-172489743130",
+    "payload": {
+      "name": "bike_stream-stream event",
+      "metadata": {
+        "eventstreamArtifactId": "4a7f9eb9-9d1b-4430-9b86-6b3e6961ba7c",
+        "eventTypes": [
+          {
+            "name": "bike_stream"
+          }
+        ]
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "cb836589-b7cf-4e6f-88e8-983a521709ad"
+      }
+    },
+    "type": "eventstreamSource-v1"
+  },
+  {
+    "uniqueIdentifier": "cf0d86f8-c1e2-471d-a6cb-39fcfe77cfef",
+    "payload": {
+      "name": "bike_stream-stream event",
+      "parentContainer": {
+        "targetUniqueIdentifier": "cb836589-b7cf-4e6f-88e8-983a521709ad"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"663f72e7-74e0-4153-9377-be0e35b6532e\",\"name\":\"SourceEventStep\",\"rows\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"4b795907-a8cf-5d18-8090-172489743130\"}],\"kind\":\"SourceReference\",\"name\":\"SourceSelector\"}]}],\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "6bbc0b2f-5403-4b0c-96a1-9475c1760ed9",
+    "payload": {
+      "name": "bike_low_stock_alert",
+      "parentContainer": {
+        "targetUniqueIdentifier": "cb836589-b7cf-4e6f-88e8-983a521709ad"
+      },
+      "definition": {
+        "type": "Object"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "b3e17343-d8eb-424c-9238-7541340d2886",
+    "payload": {
+      "name": "BikepointID",
+      "parentObject": {
+        "targetUniqueIdentifier": "6bbc0b2f-5403-4b0c-96a1-9475c1760ed9"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "cb836589-b7cf-4e6f-88e8-983a521709ad"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"7b32ef41-afbd-4576-a38a-5d3f1681a081\",\"name\":\"IdPartStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"TypeAssertion\",\"name\":\"TypeAssertion\"}]}],\"templateId\":\"IdentityPartAttribute\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "55b67004-e0af-4e39-951a-c4ef2156561c",
+    "payload": {
+      "name": "BikepointID",
+      "parentObject": {
+        "targetUniqueIdentifier": "6bbc0b2f-5403-4b0c-96a1-9475c1760ed9"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "cb836589-b7cf-4e6f-88e8-983a521709ad"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"c87df5e3-7730-40c1-823f-f9bce0ca2b84\",\"name\":\"IdStructureStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"b3e17343-d8eb-424c-9238-7541340d2886\"}],\"kind\":\"AttributeReference\",\"name\":\"idPart\",\"type\":\"complex\"}],\"kind\":\"IdPart\",\"name\":\"IdPart\"}]}],\"templateId\":\"IdentityTupleAttribute\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "6f6a05aa-b85f-44e7-a88d-5ef3a6e774a4",
+    "payload": {
+      "name": "bike_stream-stream event",
+      "parentObject": {
+        "targetUniqueIdentifier": "6bbc0b2f-5403-4b0c-96a1-9475c1760ed9"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "cb836589-b7cf-4e6f-88e8-983a521709ad"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"c3b1a14e-19ae-474f-95a5-4e46f549a84f\",\"name\":\"SplitEventStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"cf0d86f8-c1e2-471d-a6cb-39fcfe77cfef\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"BikepointID\"},{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"b3e17343-d8eb-424c-9238-7541340d2886\"}],\"kind\":\"AttributeReference\",\"name\":\"idPart\",\"type\":\"complex\"}],\"kind\":\"FieldIdMapping\",\"name\":\"FieldIdMapping\"},{\"arguments\":[{\"name\":\"isAuthoritative\",\"type\":\"boolean\",\"value\":true}],\"kind\":\"EventOptions\",\"name\":\"SplitEventOptions\"}]}],\"templateId\":\"SplitEvent\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "c8ad00e1-3134-4892-bf1c-d3881624065d",
+    "payload": {
+      "name": "No_Bikes",
+      "parentObject": {
+        "targetUniqueIdentifier": "6bbc0b2f-5403-4b0c-96a1-9475c1760ed9"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "cb836589-b7cf-4e6f-88e8-983a521709ad"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"42bda5fe-681a-49d5-b010-562a2dae0624\",\"name\":\"EventSelectStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"6f6a05aa-b85f-44e7-a88d-5ef3a6e774a4\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"No_Bikes\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"}]},{\"id\":\"24d0f430-6284-4869-8611-297b9e9d8832\",\"name\":\"EventComputeStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Number\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"TypeAssertion\",\"name\":\"TypeAssertion\"}]}],\"templateId\":\"BasicEventAttribute\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "66109b72-b2ae-4a19-8d5c-2c3ae48b1ca8",
+    "payload": {
+      "name": "No_Bikes",
+      "parentObject": {
+        "targetUniqueIdentifier": "6bbc0b2f-5403-4b0c-96a1-9475c1760ed9"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "cb836589-b7cf-4e6f-88e8-983a521709ad"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"1e95fa62-17b8-4385-9bb5-59219cb307b3\",\"name\":\"EventSelectStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"6f6a05aa-b85f-44e7-a88d-5ef3a6e774a4\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"No_Bikes\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"}]},{\"id\":\"ec38db91-2a41-4903-b046-7fbb72109473\",\"name\":\"EventComputeStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Number\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"TypeAssertion\",\"name\":\"TypeAssertion\"}]}],\"templateId\":\"BasicEventAttribute\",\"templateVersion\":\"1.3.0\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "40b1099f-c9f9-4504-aa7b-3348924aa38d",
+    "payload": {
+      "name": "No_Bikes alert",
+      "parentObject": {
+        "targetUniqueIdentifier": "6bbc0b2f-5403-4b0c-96a1-9475c1760ed9"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "cb836589-b7cf-4e6f-88e8-983a521709ad"
+      },
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"steps\":[{\"id\":\"73a48866-b05c-4b14-9a39-307ffc72f2f6\",\"name\":\"ScalarSelectStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"66109b72-b2ae-4a19-8d5c-2c3ae48b1ca8\"}],\"kind\":\"AttributeReference\",\"name\":\"attribute\",\"type\":\"complex\"}],\"kind\":\"Attribute\",\"name\":\"AttributeSelector\"}]},{\"id\":\"0137fbca-fa09-4ef8-b900-8942e67ee498\",\"name\":\"ScalarDetectStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"BecomesLessThan\"},{\"name\":\"value\",\"type\":\"number\",\"value\":2}],\"kind\":\"NumberBecomes\",\"name\":\"NumberBecomes\"},{\"arguments\":[],\"kind\":\"EachTime\",\"name\":\"OccurrenceOption\"}]},{\"id\":\"cee8605a-3f71-4137-8682-4707bf6caf20\",\"name\":\"ActStep\",\"rows\":[{\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"en-us\"},{\"name\":\"recipients\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"jack.sharifjonov@diservicesinc.com\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Activator alert No_Bikes alert\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"The condition for 'No_Bikes alert' has been met\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[{\"arguments\":[{\"name\":\"name\",\"type\":\"string\",\"value\":\"No_Bikes\"},{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"66109b72-b2ae-4a19-8d5c-2c3ae48b1ca8\"}],\"kind\":\"AttributeReference\",\"name\":\"reference\",\"type\":\"complexReference\"}],\"kind\":\"NameReferencePair\",\"type\":\"complex\"}]}],\"kind\":\"TeamsMessage\",\"name\":\"TeamsBinding\"}]}],\"templateId\":\"AttributeTrigger\",\"templateVersion\":\"1.3.0\"}",
+        "settings": {
+          "shouldRun": false,
+          "shouldApplyRuleOnUpdate": true,
+          "delayToleranceMs": 60000
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

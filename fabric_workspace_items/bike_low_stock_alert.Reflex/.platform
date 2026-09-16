@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Reflex",
+    "displayName": "bike_low_stock_alert",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f6ae33f4-fd29-bcf8-45e2-9fb35c2f6efe"
+  }
+}
