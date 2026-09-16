@@ -1,0 +1,22 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "f4f2f654-9275-4030-bc46-a40d6aa27607",
+        "clusterUri": "https://trd-c9md4ypdr831f3d4rf.z0.kusto.fabric.microsoft.com",
+        "type": "Fabric",
+        "databaseItemId": "0ffad3bc-6d86-44ec-8c7e-358790979aa0"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "37d6d061-b6c1-4539-a073-a03a8838519a",
+        "content": "Weather\n| count \n\nWeather\n| getschema \n\nWeather\n| summarize count() by State\n\nWeather\n| where EventType ==\"Thunderstorm Wind\"\n\nWeather\n| summarize count(DamageProperty) by EventType\n\nWeather\n| summarize EventCount= count() by bin(StartTime,1d)\n\nWeather\n| summarize EventCount= count() by bin(StartTime,1d)\n|render  timechart \n\nWeather\n\nWeather\n| count \n\nWeather\n| take 100\n| count\n\nWeather\n| top 10 by DamageProperty desc \n\n\nWeather\n| top 10 by DamageCrops desc \n| project StartTime, EndTime, EventId, State, DamageCrops, Source\n\nWeather\n| top 10 by DamageCrops desc \n| project StartTime, EndTime, EventId, State, DamageCrops, Source\n| extend IngestionTS= ingestion_time()\n\nWeather\n| top 10 by DamageProperty desc\n| project  StartTime, EndTime, EventId, State, DamageProperty, Source\n| extend IngestionTS= ingestion_time()\n| sort by EventId asc \n\n// Exact string match (Case-sensetive)\n\nWeather\n| where State ==\"ALABAMA\"\n\n// Exact string march (Case-insensetive)\n\nWeather\n| where  State =~\"alabama\"\n\n// String has \n\nWeather\n| where  State has \"\"\n\n// String Contains\n\nWeather\n| where  State contains \"BAMA\"\n\nWeather\n| where DamageCrops between (5000 .. 100000 )\n\nbike_events\n| take 10",
+        "title": "Tab",
+        "dataSourceId": "f4f2f654-9275-4030-bc46-a40d6aa27607"
+      }
+    ],
+    "querysetType": "Embedded"
+  }
+}
