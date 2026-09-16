@@ -1,0 +1,22 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "22bbc356-95b6-4754-ac39-8f22ea967e03",
+        "clusterUri": "",
+        "type": "Fabric",
+        "databaseItemId": "90979aa0-3587-8c7e-44ec-6d860ffad3bc"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "953e3525-2dec-452e-af95-ae38ad4c2075",
+        "content": "server_telemetry_logs\n| count \n\nserver_telemetry_logs\n| getschema \n\nlet  max_timestamp= toscalar (server_telemetry_logs| summarize max(timestamp));\nserver_telemetry_logs\n| where timestamp >= max_timestamp-7d\n| where status_code between (500 .. 599 )\n| count \n\nlet  max_timestamp= toscalar (server_telemetry_logs| summarize max(timestamp));\nserver_telemetry_logs\n| where timestamp>= max_timestamp-1d\n\n",
+        "title": "Tab",
+        "dataSourceId": "22bbc356-95b6-4754-ac39-8f22ea967e03"
+      }
+    ],
+    "querysetType": "Standalone"
+  }
+}
