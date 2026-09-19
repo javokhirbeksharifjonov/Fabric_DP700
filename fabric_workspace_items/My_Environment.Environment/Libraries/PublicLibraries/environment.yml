@@ -1,0 +1,3 @@
+dependencies:
+  - pip:
+      - docker==7.2.0
